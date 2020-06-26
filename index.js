@@ -4,6 +4,10 @@ const PORT = 3000;
 require("dotenv").config();
 
 // Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
 app.use("/api/user", require("./routes/auth"));
 
 // connect to Database

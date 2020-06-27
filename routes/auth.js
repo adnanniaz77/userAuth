@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const { registerValidation, loginValidation } = require("../validation");
 const { required } = require("@hapi/joi");
 
-// Register new user
+/////////////// REGISTER NEW USER ////////////
 router.post("/register", async (req, res) => {
     // Applying validation
     const { error } = registerValidation(req.body);
@@ -27,10 +27,31 @@ router.post("/register", async (req, res) => {
     });
     try {
         const savedUser = await user.save();
-        res.send(savedUser);
+        res.send({ user: user.id });
     } catch (err) {
         res.status(400).send(err);
     }
+});
+
+/////////////// USER LOGIN ////////////
+router.post("/login", async (req, res) => {
+    // Applying login validation
+    const { error } = loginValidation(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
+
+    //Check if email exists in the database or not
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) return res.status(400).send("Email does not exist");
+
+    // Get the password and compare it
+    const validPassword = await bcrypt.compare(
+        req.body.password,
+        user.password
+    );
+    if (!validPassword) return res.status(400).send("Invalid password");
+
+    // Display message as logged in successfully
+    res.send("Logged in");
 });
 
 module.exports = router;

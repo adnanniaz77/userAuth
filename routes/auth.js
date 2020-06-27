@@ -1,29 +1,8 @@
 const router = require("express").Router();
 const User = require("../model/User");
 
-// Validate user input
-const Joi = require("@hapi/joi");
-const { schema } = require("../model/User");
-
-// function for register validation
-const registerValidation = (data) => {
-    const schema = Joi.object({
-        name: Joi.string().min(6).required(),
-        email: Joi.string().min(6).required().email(),
-        password: Joi.string().min(6).required(),
-    });
-    return schema.validate(data);
-};
-
-// function for login validation
-const loginValidation = (data) => {
-    const schema = Joi.object({
-        email: Joi.string().min(6).required().email(),
-        password: Joi.string().min(6).required,
-    });
-
-    return schema.validate(data);
-};
+// exported function for input validation
+const { registerValidation, loginValidation } = require("../validation");
 
 // Register new user
 router.post("/register", async (req, res) => {

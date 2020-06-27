@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use("/api/user", require("./routes/auth"));
 
-// connect to Database
+// Connection to Database
 const mongoose = require("mongoose");
 mongoose
     .connect(process.env.DB_URI, {

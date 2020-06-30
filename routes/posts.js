@@ -1,9 +1,14 @@
 const express = require("express");
-const { verify } = require("jsonwebtoken");
 const router = express.Router();
+const verify = require("./verifyToken");
 
-router.post("/", verify, (req, res) => {
-    // posts
+router.get("/", verify, (req, res) => {
+    res.json({
+        posts: {
+            title: "Post Title",
+            description: "Post description",
+        },
+    });
 });
 
 module.exports = router;

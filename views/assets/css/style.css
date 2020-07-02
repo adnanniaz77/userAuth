@@ -10,3 +10,7 @@ body {
   width: auto;
   margin: 0 auto;
 }
+
+.text-danger {
+  font-weight: bold;
+}

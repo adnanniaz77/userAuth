@@ -6,10 +6,12 @@ require("dotenv").config();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('views'));
 
 // Routes
 app.use("/api/user", require("./routes/auth"));
 app.use("/api/post", require("./routes/posts"));
+app.use('/', require('./routes/html-routes'))
 
 // Connection to Database
 const mongoose = require("mongoose");

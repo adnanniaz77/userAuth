@@ -1,0 +1,12 @@
+body {
+    background-color: #eee;
+}
+
+.container {
+    min-height: 100vh;
+}
+
+.form {
+  width: auto;
+  margin: 0 auto;
+}

@@ -4,6 +4,7 @@ register.addEventListener("click", userRegistration);
 
 // login function
 function userRegistration() {
+    event.preventDefault();
     const name = document.querySelector("#name").value;
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
@@ -21,10 +22,12 @@ function userRegistration() {
     })
         .then((res) => {
             console.log(res);
+            successMessage.textContent = "Successfully register new user, redirection to login..."
 
             if (res) {
-                successMessage.textContent = "Registered new user successfully";
-                window.location = "/index.html";
+                setTimeout(() => {
+                    window.location = "/index.html";
+                }, 3000);
             }
         })
         .catch((err) => {

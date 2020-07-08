@@ -22,15 +22,20 @@ function userRegistration() {
     })
         .then((res) => {
             console.log(res);
-            successMessage.textContent = "Successfully register new user, redirection to login..."
-
             if (res) {
-                setTimeout(() => {
-                    window.location = "/index.html";
-                }, 3000);
+                successMessage.textContent = "Successfully register new user, redirection to login..."
             }
+            setTimeout(() => {
+                window.location = "/index.html";
+            }, 3000);
         })
         .catch((err) => {
-            if (err) return (errorMessage.textContent = err.responseText);
+            if (err) {
+                errorMessage.textContent = err.responseText;
+                document.querySelector('.message-with-error').style.display = 'unset';
+                setTimeout(() => {
+                    document.querySelector('.message-with-error').style.display = 'none';
+                }, 5000)
+            }
         });
 }

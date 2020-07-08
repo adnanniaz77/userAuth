@@ -15,7 +15,21 @@
         <div class="row">
             <form class="col sm-12 md-8 form">
                 <h3>Register</h3>
-                <div class="error-message text-danger"></div>
+                <div class="message-with-error">
+                    <input class="alert-state" id="alert-1" type="checkbox">
+                    <div class="alert alert-danger dismissible">
+                        <div class="error-message"></div>
+                        <label class="btn-close" for="alert-1">X</label>
+                    </div>
+                </div>
+
+                <div class="message-with-success">
+                    <input class="alert-state" id="alert-3" type="checkbox">
+                    <div class="alert alert-success dismissible">
+                        <div class="success-message"></div>
+                        <label class="btn-close" for="alert-3">X</label>
+                    </div>
+                </div>
                 <div class="successMessage text-success"></div>
                 <div class="form-group margin border padding" style="background-color: #fff;">
                     <label class=" margin-top-small">Name</label>

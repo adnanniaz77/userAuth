@@ -14,3 +14,13 @@ body {
 .text-danger {
   font-weight: bold;
 }
+
+.message-with-error {
+  display: none;
+  margin-bottom: -30px;
+}
+
+.message-with-success {
+  display: none;
+  margin-bottom: -30px;
+}
